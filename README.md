@@ -50,6 +50,7 @@ const measureOptions = {
 #### Control options
 
 Any props passed to MeasureControl are passed down to leaflet-measure.
+
 Refer [leaflet-measure control options](https://github.com/ljagis/leaflet-measure#control-options).
 
 # License
