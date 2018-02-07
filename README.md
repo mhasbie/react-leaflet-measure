@@ -27,19 +27,30 @@ Include leaflet-measure.css stylesheet to your app.
 import { Map, TileLayer } from 'react-leaflet';
 import MeasureControl from 'react-leaflet-measure';
 
+const measureOptions = {
+  position: measurePosition,
+  primaryLengthUnit: 'meters',
+  secondaryLengthUnit: 'kilometers',
+  primaryAreaUnit: 'sqmeters',
+  secondaryAreaUnit: 'acres',
+  activeColor: '#db4a29',
+  completedColor: '#9b2d14'
+};
+		
 <Map center={[101.483459, 2.938926]} zoom={12}>
   <TileLayer
     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   />
 
-  <MeasureControl position="topright" />
+  <MeasureControl {...measureOptions} />
 </Map>
 ```
 
 #### Control options
 
-Any props passed to MeasureControl are passed down to leaflet-measure. Refer [leaflet-measure control options](https://github.com/ljagis/leaflet-measure#control-options).
+Any props passed to MeasureControl are passed down to leaflet-measure.
+Refer [leaflet-measure control options](https://github.com/ljagis/leaflet-measure#control-options).
 
 # License
 
