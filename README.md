@@ -28,7 +28,7 @@ import { Map, TileLayer } from 'react-leaflet';
 import MeasureControl from 'react-leaflet-measure';
 
 const measureOptions = {
-  position: measurePosition,
+  position: 'topright',
   primaryLengthUnit: 'meters',
   secondaryLengthUnit: 'kilometers',
   primaryAreaUnit: 'sqmeters',
