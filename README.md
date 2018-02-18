@@ -5,7 +5,7 @@ for [react-leaflet](https://github.com/PaulLeCam/react-leaflet).
 
 Coordinate, linear, and area measure control for [Leaflet](http://leafletjs.com) maps. Extends [L.Control](http://leafletjs.com/reference.html#control).
 
-[![Demo](https://raw.githubusercontent.com/ljagis/leaflet-measure/master/example/leaflet-measure-demo.jpg)](http://ljagis.github.io/leaflet-measure)
+[![Demo](http://ljagis.github.io/leaflet-measure/assets/leaflet-measure.png)](http://ljagis.github.io/leaflet-measure)
 
 ## Installation
 
@@ -15,13 +15,13 @@ Coordinate, linear, and area measure control for [Leaflet](http://leafletjs.com)
 npm install react-leaflet-measure --save
 ```
 
-Include leaflet-measure.css stylesheet to your app.
+Include leaflet-measure.css stylesheet to your project.
 
 ```html
 <link rel="stylesheet" href="leaflet-measure.css">
 ```
 
-#### Usage example
+## Usage example
 
 ```javascript
 import { Map, TileLayer } from 'react-leaflet';
@@ -47,11 +47,16 @@ const measureOptions = {
 </Map>
 ```
 
-#### Control options
+### Control options
 
 Any props passed to MeasureControl are passed down to leaflet-measure.
 
 Refer [leaflet-measure control options](https://github.com/ljagis/leaflet-measure#control-options).
+
+
+# Credits
+Credits goes to all the [contributors](https://github.com/ljagis/leaflet-measure/graphs/contributors) for the original work.
+
 
 # License
 

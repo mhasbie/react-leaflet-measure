@@ -1,7 +1,7 @@
 /* eslint-disable */
 module.exports = {
   output: {
-    library: 'ReactLeaflet',
+    library: 'ReactLeafletMeasure',
     libraryTarget: 'umd'
   },
   externals: [
@@ -18,14 +18,15 @@ module.exports = {
         amd: 'jquery',
         commonjs: 'jquery',
         commonjs2: 'jquery',
-         root: 'JQuery'
+        root: 'JQuery'
       }
     },
     {
       'react-leaflet': {
         amd: 'react-leaflet',
         commonjs: 'react-leaflet',
-        commonjs2: 'react-leaflet'
+        commonjs2: 'react-leaflet',
+		root: 'ReactLeaflet'
       }
     },
     {

@@ -50,6 +50,6 @@
     "webpack-dev-server": "^1.12.1"
   },
   "dependencies": {
-    "leaflet-measure": "^2.1.7"
+    "leaflet-measure": "^3.0.2"
   }
 }
