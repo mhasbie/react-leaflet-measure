@@ -5,7 +5,11 @@ for [react-leaflet](https://github.com/PaulLeCam/react-leaflet).
 
 Coordinate, linear, and area measure control for [Leaflet](http://leafletjs.com) maps. Extends [L.Control](http://leafletjs.com/reference.html#control).
 
+*Tested with Leaflet 1.0.3 and React-Leaflet 1.3.1*
+
 [![Demo](http://ljagis.github.io/leaflet-measure/assets/leaflet-measure.png)](http://ljagis.github.io/leaflet-measure)
+
+[Demo JSFiddle](https://jsfiddle.net/m_hasbie/sb20zL8w/)
 
 ## Installation
 
