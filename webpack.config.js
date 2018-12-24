@@ -1,47 +1,42 @@
 /* eslint-disable */
 module.exports = {
-  output: {
-    library: 'ReactLeafletMeasure',
-    libraryTarget: 'umd'
-  },
-  externals: [
-    {
-      leaflet: {
-        amd: 'leaflet',
-        commonjs: 'leaflet',
-        commonjs2: 'leaflet',
-        root: 'L'
-      }
-    },
-    {
-      jquery: {
-        amd: 'jquery',
-        commonjs: 'jquery',
-        commonjs2: 'jquery',
-        root: 'JQuery'
-      }
-    },
-    {
-      'react-leaflet': {
-        amd: 'react-leaflet',
-        commonjs: 'react-leaflet',
-        commonjs2: 'react-leaflet',
-		root: 'ReactLeaflet'
-      }
-    },
-    {
-      react: {
-        amd: 'react',
-        commonjs: 'react',
-        commonjs2: 'react',
-        root: 'React'
-      }
-    },
-  ],
-  module: {
-    loaders: [
-      {test: /\.js$/, exclude: /node_modules/, loader: 'babel'}
-    ]
-  }
+	entry: './src/index.js',
+	output: {
+		library: 'ReactLeafletMeasure',
+		libraryTarget: 'umd'
+	},
+	externals: {
+		debug: 'debug',
+		leaflet: {
+			commonjs: 'leaflet',
+			commonjs2: 'leaflet',
+			root: 'L'
+		},
+		'react-leaflet': 'react-leaflet',
+		react: {
+			commonjs: 'react',
+			commonjs2: 'react',
+			root: 'React'
+		}
+	},
+	mode: 'production',
+	module: {
+		rules: [
+			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				use: [
+					{ loader: 'babel-loader' }
+				]
+			},
+			{
+				test: /\.css$/,
+				exclude: /node_modules/,
+				use: [
+					{ loader: 'style-loader' },
+					{ loader: 'css-loader' }
+				]
+			}
+		]
+	}
 };
-

@@ -1,55 +1,58 @@
 {
-  "name": "react-leaflet-measure",
-  "version": "0.1.2",
-  "description": "React wrapper of leaflet-measure. Coordinate, linear, and area measure control for Leaflet maps.",
-  "main": "dist/react-leaflet-measure.js",
-  "scripts": {
-    "build": "npm run build:lib && npm run build:dist",
-    "build:dist": "webpack src/index.js dist/react-leaflet-measure.js & webpack -p src/index.js dist/react-leaflet-measure.min.js",
-    "build:lib": "npm run compile:lib",
-    "clean:lib": "rm -Rf ./lib",
-    "compile:lib": "babel src --out-dir lib",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mhasbie/react-leaflet-measure.git"
-  },
-  "keywords": [
-    "react",
-    "leaflet",
-    "react-leaflet",
-    "leaflet-measure",
-    "react-leaflet-measure"
-  ],
-  "author": "M. Hasbie",
-  "license": "MIT",
-  "peerDependencies": {
-    "leaflet": "^1.0.3",
-    "react": "^15.0.0 || ^16.0.0",
-    "react-leaflet": "^1.3.1"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.8.0",
-    "babel-core": "^6.8.0",
-    "babel-eslint": "^7.0.0",
-    "babel-loader": "^6.2.4",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.0.15",
-    "babel-preset-stage-0": "^6.1.18",
-    "babel-register": "^6.26.0",
-    "eslint": "^3.8.1",
-    "eslint-plugin-react": "^6.4.1",
-    "leaflet": "^1.0.2",
-    "lodash.isequal": "^4.4.0",
-    "prop-types": "^15.5.10",
-    "react": "^15.5.0",
-    "react-dom": "^15.5.0",
-    "react-leaflet": "^1.0.1",
-    "webpack": "^1.13.0",
-    "webpack-dev-server": "^1.12.1"
-  },
-  "dependencies": {
-    "leaflet-measure": "^3.0.2"
-  }
+	"name": "react-leaflet-measure",
+	"version": "2.0.0",
+	"description": "React wrapper of leaflet-measure. Coordinate, linear, and area measure control for Leaflet maps.",
+	"main": "dist/react-leaflet-measure.min.js",
+	"scripts": {
+		"build": "npm run build:lib && npm run build:dist",
+		"build:dist": "webpack src/index.js --output dist/react-leaflet-measure.min.js",
+		"build:lib": "npm run compile:lib",
+		"clean:lib": "rm -Rf ./lib",
+		"compile:lib": "babel src --out-dir lib",
+		"prepublishOnly": "npm run build",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/mhasbie/react-leaflet-measure.git"
+	},
+	"keywords": [
+		"react",
+		"leaflet",
+		"react-leaflet",
+		"leaflet-measure",
+		"react-leaflet-measure"
+	],
+	"author": "M. Hasbie",
+	"license": "MIT",
+	"peerDependencies": {
+		"leaflet": "^1.3.4",
+		"react-leaflet": "^2.1.4"
+	},
+	"devDependencies": {
+		"babel-cli": "^6.26.0",
+		"babel-core": "^6.26.3",
+		"babel-eslint": "^10.0.1",
+		"babel-loader": "^7.1.5",
+		"babel-plugin-transform-object-rest-spread": "^6.26.0",
+		"babel-preset-env": "^1.7.0",
+		"babel-preset-react": "^6.24.1",
+		"babel-preset-stage-0": "^6.24.1",
+		"babel-register": "^6.26.0",
+		"css-loader": "^2.0.2",
+		"eslint": "^5.11.0",
+		"eslint-plugin-react": "^7.11.1",
+		"leaflet": "^1.3.4",
+		"prop-types": "^15.5.10",
+		"react": "^16.5.2",
+		"react-dom": "^16.5.2",
+		"react-leaflet": "^2.0.1",
+		"style-loader": "^0.23.1",
+		"webpack": "^4.28.2",
+		"webpack-cli": "^3.1.2",
+		"webpack-dev-server": "^3.1.14"
+	},
+	"dependencies": {
+		"leaflet-measure": "^3.1.0"
+	}
 }

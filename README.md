@@ -13,11 +13,19 @@ for [react-leaflet](https://github.com/PaulLeCam/react-leaflet).
 
 Coordinate, linear, and area measure control for [Leaflet](http://leafletjs.com) maps. Extends [L.Control](http://leafletjs.com/reference.html#control).
 
-*Tested with Leaflet 1.0.3 and React-Leaflet 1.3.1*
+*Tested with Leaflet 1.3.4 and React-Leaflet 2.1.4*
+
+
+## Demos
 
 [![Demo](http://ljagis.github.io/leaflet-measure/assets/leaflet-measure.png)](http://ljagis.github.io/leaflet-measure)
 
 [Demo JSFiddle](https://jsfiddle.net/m_hasbie/sb20zL8w/)
+
+| Version	| Demo	|
+| ---		| ---	|
+| react-leaflet@1.9.1| [`JSFiddle`](https://jsfiddle.net/m_hasbie/sb20zL8w/), [`CodePen`](https://codepen.io/m_hasbie/pen/MZoYvN) |
+| react-leaflet@2.x| [`JSFiddle`](https://jsfiddle.net/m_hasbie/meLx7pgv/), [`CodePen`](https://codepen.io/m_hasbie/pen/mawyqX) |
 
 ## Installation
 
@@ -25,12 +33,6 @@ Coordinate, linear, and area measure control for [Leaflet](http://leafletjs.com)
 
 ```bash
 npm install react-leaflet-measure --save
-```
-
-Include leaflet-measure.css stylesheet to your project.
-
-```html
-<link rel="stylesheet" href="leaflet-measure.css">
 ```
 
 ## Usage example
@@ -56,6 +58,27 @@ const measureOptions = {
   />
 
   <MeasureControl {...measureOptions} />
+</Map>
+```
+
+### Usage with React-Leaflet v2
+
+This plugin is compatible with version 2 of React-Leaflet, but you have to wrap the `MeasureControl` component using the [`withLeaflet` higher-order component](https://react-leaflet.js.org/docs/en/context.html) to give it access to the new context mechanism. For example:
+
+```javascript
+import { Map, withLeaflet } from 'react-leaflet';
+import MeasureControl from 'react-leaflet-measure';
+
+const WrappedMeasureControl = withLeaflet(MeasureControl);
+		
+<Map center={[101.483459, 2.938926]} zoom={12}>
+  <TileLayer
+    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+  />
+
+  // Use <WrappedMeasureControl> where you would have used <MeasureControl>.
+  <WrappedMeasureControl />
 </Map>
 ```
 
