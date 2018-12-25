@@ -1,8 +1,12 @@
 /* eslint-disable */
 module.exports = {
+	entry: './dist/react-leaflet-measure.min.js',
 	output: {
-		library: 'ReactLeafletMeasure',
-		libraryExport: 'default',
+		library: {
+			root: 'ReactLeafletMeasure',
+			amd: 'react-leaflet-measure',
+			commonjs: 'react-leaflet-measure'
+		},
 		libraryTarget: 'umd'
 	},
 	externals: {
