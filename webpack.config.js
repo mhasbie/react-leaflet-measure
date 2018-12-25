@@ -1,8 +1,8 @@
 /* eslint-disable */
 module.exports = {
-	entry: './src/index.js',
 	output: {
 		library: 'ReactLeafletMeasure',
+		libraryExport: 'default',
 		libraryTarget: 'umd'
 	},
 	externals: {
