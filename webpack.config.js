@@ -7,8 +7,8 @@ module.exports = {
 			amd: 'react-leaflet-measure',
 			commonjs: 'react-leaflet-measure'
 		},
-		libraryExport: 'default',
-		libraryTarget: 'commonjs2'
+		libraryExport: '',
+		libraryTarget: 'umd'
 	},
 	externals: {
 		debug: 'debug',
@@ -17,7 +17,11 @@ module.exports = {
 			commonjs2: 'leaflet',
 			root: 'L'
 		},
-		'react-leaflet': 'react-leaflet',
+		'react-leaflet': {
+			commonjs: 'react-leaflet',
+			commonjs2: 'react-leaflet',
+			root: 'ReactLeaflet'
+		},
 		react: {
 			commonjs: 'react',
 			commonjs2: 'react',
@@ -31,7 +35,12 @@ module.exports = {
 				test: /\.js$/,
 				exclude: /node_modules/,
 				use: [
-					{ loader: 'babel-loader' }
+					{ 
+						loader: 'babel-loader',
+						options: {
+							presets: ['env', 'react']
+						}
+					}
 				]
 			},
 			{
