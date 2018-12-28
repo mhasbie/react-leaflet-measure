@@ -1,7 +1,7 @@
 react-leaflet-measure Changelog
 =========================
 
-## 2.0.6 (2018-12-29)
+## 2.0.7 (2018-12-29)
 
 * Add example for react-leaflet v1
 * Update README

@@ -3,4 +3,5 @@
 .travis.yml
 webpack.config.js
 src
+example
 .vscode

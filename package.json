@@ -1,6 +1,6 @@
 {
 	"name": "react-leaflet-measure",
-	"version": "2.0.6",
+	"version": "2.0.7",
 	"description": "React wrapper of leaflet-measure. Coordinate, linear, and area measure control for Leaflet maps.",
 	"main": "dist/react-leaflet-measure.min.js",
 	"scripts": {
