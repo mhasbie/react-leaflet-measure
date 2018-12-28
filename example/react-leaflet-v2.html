@@ -27,8 +27,8 @@
 		<script src="../dist/react-leaflet-measure.min.js"></script>
 		<script type="text/babel">
 			const { Map, TileLayer, withLeaflet } = ReactLeaflet;
-			const MeasureControl = ReactLeafletMeasure.default;
-			const WrappedMeasureControl = withLeaflet(MeasureControl);
+			const MeasureControlDefault = ReactLeafletMeasure;
+			const MeasureControl = withLeaflet(MeasureControlDefault);
 
 			class SimpleExample extends React.Component {
 				constructor() {
@@ -58,7 +58,7 @@
 								attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 								url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
 							/>
-							<WrappedMeasureControl {...measureOptions} />
+							<MeasureControl {...measureOptions} />
 						</Map>
 					);
 				}

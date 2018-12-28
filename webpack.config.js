@@ -7,7 +7,7 @@ module.exports = {
 			amd: 'react-leaflet-measure',
 			commonjs: 'react-leaflet-measure'
 		},
-		libraryExport: '',
+		libraryExport: 'default',
 		libraryTarget: 'umd'
 	},
 	externals: {

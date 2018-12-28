@@ -13,7 +13,7 @@ for [react-leaflet](https://github.com/PaulLeCam/react-leaflet).
 
 Coordinate, linear, and area measure control for [Leaflet](http://leafletjs.com) maps. Extends [L.Control](http://leafletjs.com/reference.html#control).
 
-*Tested with Leaflet 1.3.4 and React-Leaflet 2.1.4*
+*Tested with Leaflet 1.3.4 and React-Leaflet 1.9.1, React-Leaflet 2.1.4*
 
 
 ## Demos
@@ -24,8 +24,8 @@ Coordinate, linear, and area measure control for [Leaflet](http://leafletjs.com)
 
 | Version	| Demo	|
 | ---		| ---	|
-| react-leaflet@1.9.1| [`JSFiddle`](https://jsfiddle.net/m_hasbie/sb20zL8w/), [`CodePen`](https://codepen.io/m_hasbie/pen/MZoYvN) |
-| react-leaflet@2.x| [`JSFiddle`](https://jsfiddle.net/m_hasbie/meLx7pgv/), [`CodePen`](https://codepen.io/m_hasbie/pen/mawyqX) |
+| `react-leaflet@1.9.1`	| [`JSFiddle`](https://jsfiddle.net/m_hasbie/sb20zL8w/), [`CodePen`](https://codepen.io/m_hasbie/pen/MZoYvN) |
+| `react-leaflet@2.x`	| [`JSFiddle`](https://jsfiddle.net/m_hasbie/meLx7pgv/), [`CodePen`](https://codepen.io/m_hasbie/pen/mawyqX) |
 
 ## Installation
 
@@ -67,9 +67,12 @@ This plugin is compatible with version 2 of React-Leaflet, but you have to wrap 
 
 ```javascript
 import { Map, withLeaflet } from 'react-leaflet';
-import MeasureControl from 'react-leaflet-measure';
 
-const WrappedMeasureControl = withLeaflet(MeasureControl);
+// Import to a different variable so you don't have to update the rest of your codes
+import MeasureControlDefault from 'react-leaflet-measure';
+
+// Wrap our new variable and assign it to the one we used before. The rest of the codes stays the same.
+const MeasureControl = withLeaflet(MeasureControlDefault);
 		
 <Map center={[101.483459, 2.938926]} zoom={12}>
   <TileLayer
@@ -77,8 +80,7 @@ const WrappedMeasureControl = withLeaflet(MeasureControl);
     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   />
 
-  // Use <WrappedMeasureControl> where you would have used <MeasureControl>.
-  <WrappedMeasureControl />
+  <MeasureControl />
 </Map>
 ```
 
