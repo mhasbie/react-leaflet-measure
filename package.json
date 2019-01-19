@@ -10,7 +10,7 @@
 		"clean:lib": "rm -Rf ./lib",
 		"compile:lib": "babel src --out-dir lib",
 		"prepublishOnly": "npm run build",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "jest --testPathIgnorePatterns enzyme.js"
 	},
 	"repository": {
 		"type": "git",
@@ -33,6 +33,7 @@
 		"babel-cli": "^6.26.0",
 		"babel-core": "^6.26.3",
 		"babel-eslint": "^10.0.1",
+		"babel-jest": "^23.6.0",
 		"babel-loader": "^7.1.5",
 		"babel-plugin-transform-class-properties": "^6.24.1",
 		"babel-plugin-transform-object-rest-spread": "^6.26.0",
@@ -41,8 +42,12 @@
 		"babel-preset-stage-0": "^6.24.1",
 		"babel-register": "^6.26.0",
 		"css-loader": "^2.0.2",
+		"enzyme": "^3.8.0",
+		"enzyme-adapter-react-16": "^1.7.1",
 		"eslint": "^5.11.0",
 		"eslint-plugin-react": "^7.11.1",
+		"jest": "^23.6.0",
+		"jest-enzyme": "^7.0.1",
 		"leaflet": "^1.3.4",
 		"prop-types": "^15.5.10",
 		"react": "^16.5.2",
@@ -55,5 +60,11 @@
 	},
 	"dependencies": {
 		"leaflet-measure": "^3.1.0"
+	},
+	"jest": {
+		"collectCoverage": true,
+		"transform": {
+			".*": "<rootDir>/node_modules/babel-jest"
+		}
 	}
 }
