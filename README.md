@@ -1,12 +1,14 @@
 # react-leaflet-measure
 
-[![travis build](https://img.shields.io/travis/mhasbie/react-leaflet-measure.svg?style=plastic)](https://travis-ci.org/mhasbie/react-leaflet-measure)
 [![version](https://img.shields.io/npm/v/react-leaflet-measure.svg?style=plastic)](http://npm.im/react-leaflet-measure)
-[![MIT License](https://img.shields.io/npm/l/react-leaflet-measure.svg?style=plastic)](http://opensource.org/licenses/MIT)
+[![react-leaflet compatibility](https://img.shields.io/npm/dependency-version/react-leaflet-measure/peer/react-leaflet.svg?style=plastic)](https://github.com/mhasbie/react-leaflet-measure)
+[![travis build](https://img.shields.io/travis/mhasbie/react-leaflet-measure.svg?style=plastic)](https://travis-ci.org/mhasbie/react-leaflet-measure)
 [![dependencies](https://img.shields.io/david/mhasbie/react-leaflet-measure.svg?style=plastic)](https://david-dm.org/mhasbie/react-leaflet-measure)
 [![peer dependencies](https://img.shields.io/david/peer/mhasbie/react-leaflet-measure.svg?style=plastic)](https://david-dm.org/mhasbie/react-leaflet-measure?type=peer)
-[![downloads](https://img.shields.io/npm/dt/react-leaflet-measure.svg?style=plastic)](http://npm-stat.com/charts.html?package=react-leaflet-measure&from=2018-01-01)
 [![issues](https://img.shields.io/github/issues/mhasbie/react-leaflet-measure.svg?style=plastic)](https://github.com/mhasbie/react-leaflet-measure/issues)
+[![downloads](https://img.shields.io/npm/dt/react-leaflet-measure.svg?style=plastic)](http://npm-stat.com/charts.html?package=react-leaflet-measure&from=2018-01-01)
+[![MIT License](https://img.shields.io/npm/l/react-leaflet-measure.svg?style=plastic)](http://opensource.org/licenses/MIT)
+
 
 React wrapper of [leaflet-measure](https://github.com/ljagis/leaflet-measure)
 for [react-leaflet](https://github.com/PaulLeCam/react-leaflet).
