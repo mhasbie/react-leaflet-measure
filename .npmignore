@@ -2,6 +2,7 @@
 node_modules/
 lib/
 src/
+docs/
 example/
 coverage/
 __tests__/

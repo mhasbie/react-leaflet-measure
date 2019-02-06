@@ -1,7 +1,7 @@
 react-leaflet-measure Changelog
 =========================
 
-## 2.1.0 (2019-02-07)
+## 2.1.1 (2019-02-07)
 
 * Add website
 * Update README
