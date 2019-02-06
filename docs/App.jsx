@@ -280,7 +280,7 @@ class App extends React.Component {
 								<h4>Events</h4>
 								<hr />
 								
-								<table class="table table-hover table-striped">
+								<table class="table table-hover table-striped table-bordered">
 									<thead class="thead-dark">
 										<tr>
 											<th>Event</th>
