@@ -20,8 +20,6 @@ Coordinate, linear, and area measure control for [Leaflet](http://leafletjs.com)
 
 [![Demo](http://ljagis.github.io/leaflet-measure/assets/leaflet-measure.png)](http://ljagis.github.io/leaflet-measure)
 
-[Demo JSFiddle](https://jsfiddle.net/m_hasbie/sb20zL8w/)
-
 | Version	| Demo	|
 | ---		| ---	|
 | `react-leaflet@1.9.1`	| [`JSFiddle`](https://jsfiddle.net/m_hasbie/sb20zL8w/), [`CodePen`](https://codepen.io/m_hasbie/full/MZoYvN) |

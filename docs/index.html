@@ -3,16 +3,15 @@
 		<meta charset="UTF-8">
 		<title>react-leaflet-measure</title>
 		<meta name="description" content="https://github.com/mhasbie/react-leaflet-measure">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400italic,700,700italic" rel="stylesheet">
-		<link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/leaflet.css" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.css" rel="stylesheet">
+		
 		<style>
 			.leaflet-container {
-				position: absolute;
-				top: 0;
-				bottom: 0;
-				left: 0;
-				right: 0;
+				width: 100%;
+				height: 400px;
 			}
 		</style>
 	</head>
@@ -26,45 +25,8 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/leaflet-src.js"></script>
 		<script src="https://unpkg.com/react-leaflet@1.9.1/dist/react-leaflet.js"></script>
 		<script src="https://npmcdn.com/react-leaflet-measure@2.0.7/dist/react-leaflet-measure.min.js"></script>
-		<script type="text/babel">
-			const { Map, TileLayer } = ReactLeaflet;
-			const MeasureControl = ReactLeafletMeasure;
-
-			class SimpleExample extends React.Component {
-				constructor() {
-					super();
-					this.state = {
-						center: [2.935403, 101.448205],
-						zoom: 10,
-						minZoom: 1,
-						maxZoom: 22,
-					}
-				}
-
-				render() {
-					const position = [this.state.lat, this.state.lng];
-					const measureOptions = {
-						position: 'topright',
-						primaryLengthUnit: 'meters',
-						secondaryLengthUnit: 'kilometers',
-						primaryAreaUnit: 'sqmeters',
-						secondaryAreaUnit: 'acres',
-						activeColor: '#db4a29',
-						completedColor: '#9b2d14'
-					};
-					return (
-						<Map {...this.state}>
-							<TileLayer
-								attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-								url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-							/>
-							<MeasureControl {...measureOptions} />
-						</Map>
-					);
-				}
-			}
-
-			ReactDOM.render(<SimpleExample />, document.getElementById('container'))
+		<script type="text/babel" src="App.jsx">
+			
 		</script>
 	</body>
 </html>
