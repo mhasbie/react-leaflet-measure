@@ -20,10 +20,7 @@ Coordinate, linear, and area measure control for [Leaflet](http://leafletjs.com)
 
 [![Demo](http://ljagis.github.io/leaflet-measure/assets/leaflet-measure.png)](http://ljagis.github.io/leaflet-measure)
 
-| Version	| Demo	|
-| ---		| ---	|
-| `react-leaflet@1.9.1`	| [`JSFiddle`](https://jsfiddle.net/m_hasbie/sb20zL8w/), [`CodePen`](https://codepen.io/m_hasbie/full/MZoYvN) |
-| `react-leaflet@2.x`	| [`JSFiddle`](https://jsfiddle.net/m_hasbie/meLx7pgv/), [`CodePen`](https://codepen.io/m_hasbie/full/mawyqX) |
+[`Demo Page`](https://mhasbie.github.io/react-leaflet-measure/)
 
 ## Installation
 
@@ -87,6 +84,14 @@ const MeasureControl = withLeaflet(MeasureControlDefault);
 Any props passed to MeasureControl are passed down to leaflet-measure.
 
 Refer [leaflet-measure control options](https://github.com/ljagis/leaflet-measure#control-options).
+
+
+## Events
+
+| Event | Data | Description
+| --- | --- | ---
+| onMeasurestart | this | Fired when measurement starts.
+| onMeasurefinish | result | Fired when measurement finishes with results of the measurement.
 
 
 # Credits

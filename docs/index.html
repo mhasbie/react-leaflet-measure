@@ -14,19 +14,22 @@
 		<!-- Custom styles for this template -->
 		<link href="css/business-frontpage.css" rel="stylesheet">
 
-		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400italic,700,700italic" rel="stylesheet">
+		<!-- Font Awesome -->
+		<!--<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">-->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+		
+		<!-- Dependencies css -->
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.css" rel="stylesheet">
 		
 		<style>
 			.leaflet-container {
 				width: 100%;
-				height: 400px;
+				height: 100%!important;
 			}
 		</style>
 	</head>
 	<body>
 		<!-- Navigation -->
-		
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 			<div class="container">
 				<a class="navbar-brand" href="#">react-leaflet-measure</a>
@@ -57,12 +60,22 @@
 		</nav>
 		
 		<!-- Header -->
-		<header class="bg-dark mb-5">
+		<header class="bg-dark mb-4">
 			<div class="container h-100">
 				<div class="row h-100 align-items-center">
 					<div class="col-lg-12">
 						<h1 class="display-4 text-white mb-2">react-leaflet-measure</h1>
-						<p class="lead mb-5 text-white-50">Coordinate, linear, and area measure control for react-leaflet maps</p>
+						<p class="lead mb-4 text-white-50">
+							Coordinate, linear, and area measure control for react-leaflet maps
+							<div class="btn-group">
+								<a class="btn btn-outline-light" href="https://github.com/mhasbie/react-leaflet-measure" title="View on Github">
+									<i class="fab fa-github"></i> Github
+								</a>
+								<a class="btn btn-outline-light" href="https://www.npmjs.com/package/react-leaflet-measure" title="View on npm">
+									<i class="fab fa-npm"></i> npm
+								</a>
+							</div>
+						</p>
 					</div>
 				</div>
 			</div>
@@ -88,7 +101,7 @@
 		<!-- Bootstrap core JavaScript -->
 		<script src="vendor/jquery/jquery.min.js"></script>
 		<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+		
 		<!-- Dependencies JavaScript -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.23.1/babel.js"></script>
 		<script src="https://unpkg.com/react@16.5.2/umd/react.production.min.js"></script>
@@ -97,9 +110,9 @@
 		<script src="https://unpkg.com/react-leaflet@2.2.0/dist/react-leaflet.js"></script>
 		
 		<!-- Plugin JavaScript -->
-		<script src="https://npmcdn.com/react-leaflet-measure@2.0.7/dist/react-leaflet-measure.min.js"></script>
+		<script src="https://npmcdn.com/react-leaflet-measure/dist/react-leaflet-measure.min.js"></script>
 		
 		<!-- Main App -->
-		<script type="text/babel" src="App.jsx" />
+		<script type="text/babel" src="App.jsx" ></script>
 	</body>
 </html>

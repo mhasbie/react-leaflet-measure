@@ -1,16 +1,17 @@
 {
 	"name": "react-leaflet-measure",
-	"version": "2.0.8",
+	"version": "2.1.0",
 	"description": "React wrapper of leaflet-measure. Coordinate, linear, and area measure control for Leaflet maps.",
 	"main": "dist/react-leaflet-measure.min.js",
 	"scripts": {
-		"build": "npm run build:lib && npm run build:dist",
+		"build": "npm run build:lib && npm run build:dist && npm run build:dev",
 		"build:dist": "webpack src/index.js --output dist/react-leaflet-measure.min.js",
+		"build:dev": "webpack src/index.js --mode development --output dist/react-leaflet-measure.js",
 		"build:lib": "npm run compile:lib",
 		"clean:lib": "rm -Rf ./lib",
 		"compile:lib": "babel src --out-dir lib",
 		"prepublishOnly": "npm run build",
-		"test": "jest --testPathIgnorePatterns enzyme.js"
+		"test": "jest"
 	},
 	"repository": {
 		"type": "git",
@@ -66,6 +67,9 @@
 		"collectCoverage": true,
 		"transform": {
 			".*": "<rootDir>/node_modules/babel-jest"
-		}
+		},
+		"testMatch": [
+			"**/__tests__/**/?(*.)+(spec|test).[jt]s?(x)"
+		]
 	}
 }

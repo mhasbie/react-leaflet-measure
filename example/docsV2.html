@@ -1,0 +1,221 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>react-leaflet-measure</title>
+		<meta name="description" content="https://github.com/mhasbie/react-leaflet-measure">
+
+		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400italic,700,700italic" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.css" rel="stylesheet">
+		<style>
+			.leaflet-container {
+				width: 100%;
+				height: 400px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container"></div>
+  
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.23.1/babel.js"></script>
+		<script src="https://unpkg.com/react@16.5.2/umd/react.production.min.js"></script>
+		<script src="https://unpkg.com/react-dom@16.5.2/umd/react-dom.production.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet-src.js"></script>
+		<script src="https://unpkg.com/react-leaflet@2.1.4/dist/react-leaflet.js"></script>
+		<script src="../dist/react-leaflet-measure.min.js"></script>
+		<script type="text/babel">
+			const { Map, TileLayer, withLeaflet } = ReactLeaflet;
+			const MeasureControlDefault = ReactLeafletMeasure;
+			const MeasureControl = withLeaflet(MeasureControlDefault);
+
+			class SimpleExample extends React.Component {
+				constructor(props) {
+					super(props);
+					this.onChangePosition = this.onChangePosition.bind(this);
+					this.onChangePrimaryLengthUnit = this.onChangePrimaryLengthUnit.bind(this);
+					this.onChangeSecondaryLengthUnit = this.onChangeSecondaryLengthUnit.bind(this);
+					this.onChangePrimaryAreaUnit = this.onChangePrimaryAreaUnit.bind(this);
+					this.onChangeSecondaryAreaUnit = this.onChangeSecondaryAreaUnit.bind(this);
+					this.onChangeActiveColor = this.onChangeActiveColor.bind(this);
+					this.onChangeCompletedColor = this.onChangeCompletedColor.bind(this);
+					this.resetOptions = this.resetOptions.bind(this);
+					
+					this.state = {
+						mapOptions: {
+							center: [2.935403, 101.448205],
+							zoom: 10,
+							minZoom: 1,
+							maxZoom: 22
+						},
+						position: 'topright',
+						primaryLengthUnit: 'meters',
+						secondaryLengthUnit: 'kilometers',
+						primaryAreaUnit: 'sqmeters',
+						secondaryAreaUnit: 'acres',
+						activeColor: '#db4a29',
+						completedColor: '#9b2d14'
+					}
+				}
+				
+				onChangePosition(event) {
+					this.setState({ position: event.target.value });
+				}
+				
+				onChangePrimaryLengthUnit(event) {
+					this.setState({ primaryLengthUnit: event.target.value });
+				}
+				
+				onChangeSecondaryLengthUnit(event) {
+					this.setState({ secondaryLengthUnit: event.target.value });
+				}
+				
+				onChangePrimaryAreaUnit(event) {
+					this.setState({ primaryAreaUnit: event.target.value });
+				}
+				
+				onChangeSecondaryAreaUnit(event) {
+					this.setState({ secondaryAreaUnit: event.target.value });
+				}
+				
+				onChangeActiveColor(event) {
+					this.setState({ activeColor: event.target.value });
+				}
+				
+				onChangeCompletedColor(event) {
+					this.setState({ completedColor: event.target.value });
+				}
+				
+				resetOptions(event) {
+					this.setState({
+						position: 'topright',
+						primaryLengthUnit: 'meters',
+						secondaryLengthUnit: 'kilometers',
+						primaryAreaUnit: 'sqmeters',
+						secondaryAreaUnit: 'acres',
+						activeColor: '#db4a29',
+						completedColor: '#9b2d14'
+					});
+				}
+
+				render() {
+					const {
+						mapOptions,
+						position,
+						primaryLengthUnit,
+						secondaryLengthUnit,
+						primaryAreaUnit,
+						secondaryAreaUnit,
+						activeColor,
+						completedColor
+					} = this.state;
+					const measureOptions = {
+						position,
+						primaryLengthUnit,
+						secondaryLengthUnit,
+						primaryAreaUnit,
+						secondaryAreaUnit,
+						activeColor,
+						completedColor
+					};
+					return (
+						<div class="row">
+							<div class="col-md-8">
+								<div class="card">
+									<div class="card-body">
+										<Map {...mapOptions}>
+											<TileLayer
+												attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+												url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+											/>
+											<MeasureControl {...measureOptions} />
+										</Map>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="card">
+									<div class="card-body">
+										<h6><i class="fas fa-cogs" /> Options</h6>
+										<hr/>
+										<form>
+											<div class="form-group row">
+												<label for="position" class="col-sm-6 col-form-label">Position:</label>
+												<div class="col-sm-6">
+													<select class="form-control" id="position" value={position} onChange={this.onChangePosition}>
+														<option value="topleft">Top Left</option>
+														<option value="topright">Top Right</option>
+														<option value="bottomleft">Bottom Left</option>
+														<option value="bottomright">Bottom Right</option>
+													</select>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label for="primaryLengthUnit" class="col-sm-6 col-form-label">Primary Length Unit:</label>
+												<div class="col-sm-6">
+													<select class="form-control" id="primaryLengthUnit" value={primaryLengthUnit} onChange={this.onChangePrimaryLengthUnit}>
+														<option value="feet">feet</option>
+														<option value="meters">meters</option>
+														<option value="miles">miles</option>
+														<option value="kilometers">kilometers</option>
+													</select>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label for="secondaryLengthUnit" class="col-sm-6 col-form-label">Secondary Length Unit:</label>
+												<div class="col-sm-6">
+													<select class="form-control" id="secondaryLengthUnit" value={secondaryLengthUnit} onChange={this.onChangeSecondaryLengthUnit}>
+														<option value="feet">feet</option>
+														<option value="meters">meters</option>
+														<option value="miles">miles</option>
+														<option value="kilometers">kilometers</option>
+													</select>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label for="primaryAreaUnit" class="col-sm-6 col-form-label">Primary Area Unit:</label>
+												<div class="col-sm-6">
+													<select class="form-control" id="primaryAreaUnit" value={primaryAreaUnit} onChange={this.onChangePrimaryAreaUnit}>
+														<option value="acres">acres</option>
+														<option value="hectares">hectares</option>
+														<option value="sqfeet">sqfeet</option>
+														<option value="sqmeters">sqmeters</option>
+														<option value="sqmiles">sqmiles</option>
+													</select>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label for="secondaryAreaUnit" class="col-sm-6 col-form-label">Secondary Area Unit:</label>
+												<div class="col-sm-6">
+													<select class="form-control" id="secondaryAreaUnit" value={secondaryAreaUnit} onChange={this.onChangeSecondaryAreaUnit}>
+														<option value="acres">acres</option>
+														<option value="hectares">hectares</option>
+														<option value="sqfeet">sqfeet</option>
+														<option value="sqmeters">sqmeters</option>
+														<option value="sqmiles">sqmiles</option>
+													</select>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label for="activeColor" class="col-sm-6 col-form-label">Active Color:</label>
+												<div class="col-sm-6">
+													<input type="color" class="form-control" id="activeColor" value={activeColor} onChange={this.onChangeActiveColor}/>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label for="completedColor" class="col-sm-6 col-form-label">Completed Color:</label>
+												<div class="col-sm-6">
+													<input type="color" class="form-control" id="completedColor" value={completedColor} onChange={this.onChangeCompletedColor}/>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					);
+				}
+			}
+
+			ReactDOM.render(<SimpleExample />, document.getElementById('container'))
+		</script>
+	</body>
+</html>
