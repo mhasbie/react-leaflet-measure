@@ -1,5 +1,6 @@
-const { Map, TileLayer } = ReactLeaflet;
-const MeasureControl = ReactLeafletMeasure;
+const { Map, TileLayer, withLeaflet } = ReactLeaflet;
+const MeasureControlDefault = ReactLeafletMeasure;
+const MeasureControl = withLeaflet(MeasureControlDefault);
 
 class App extends React.Component {
 	constructor() {
