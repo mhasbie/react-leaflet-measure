@@ -115,7 +115,9 @@ class App extends React.Component {
 										<h6 class="mt-1"><i class="fas fa-cogs" /> Options</h6>
 									</div>
 									<div class="col-sm-6 text-right">
-										<button type="button" class="btn btn-sm" onClick={this.resetOptions}><i class="fas fa-undo-alt" /> Reset</button>
+										<button type="button" class="btn btn-sm btn-outline-info" onClick={this.resetOptions}>
+											<i class="fas fa-undo-alt" /> Reset
+										</button>
 									</div>
 								</div>
 								<hr/>
