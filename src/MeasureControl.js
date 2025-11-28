@@ -1,37 +1,48 @@
-import { MapControl } from 'react-leaflet';
+import { useEffect, useRef } from 'react';
+import { useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet-measure';
 import './leaflet-measure.css';
 
-export default class MeasureControl extends MapControl {
-	createLeafletElement(props) {
-		return L.control.measure(props);
-	}
+/**
+ * Functional MeasureControl for React-Leaflet v4+ and React 19
+ * @param {object} props - Props for the control
+ * @param {function} [props.onMeasurestart] - Handler for measurestart event
+ * @param {function} [props.onMeasurefinish] - Handler for measurefinish event
+ * @returns null
+ */
+const MeasureControl = ({ onMeasurestart, onMeasurefinish, ...options }) => {
+	const map = useMap();
+	const controlRef = useRef();
 
-	componentDidMount() {
-		super.componentDidMount();
-		const { map } = this.props.leaflet || this.context;
-		const {
-			onMeasurestart,
-			onMeasurefinish
-		} = this.props;
-		map.on('measurestart', (e) => {
-				this._propagateEvent(onMeasurestart, e);
-			})
-			.on('measurefinish', (e) => {
-				this._propagateEvent(onMeasurefinish, e);
-			});
-	}
-	
-	updateLeafletElement(fromProps, toProps) {
-		const { map } = this.props.leaflet || this.context;
-		this.leafletElement.remove();
-		this.leafletElement = new L.control.measure(toProps);
-		this.leafletElement.addTo(map)
-	}
-	
-	_propagateEvent(eventHandler, event) {
-		if (typeof eventHandler !== 'function') return;
-		eventHandler(event);
-	}
-}
+	useEffect(() => {
+		// Create control
+		const control = L.control.measure(options);
+		controlRef.current = control;
+		control.addTo(map);
+
+		// Event handlers
+		if (typeof onMeasurestart === 'function') {
+			map.on('measurestart', onMeasurestart);
+		}
+		if (typeof onMeasurefinish === 'function') {
+			map.on('measurefinish', onMeasurefinish);
+		}
+
+		// Cleanup
+		return () => {
+			if (typeof onMeasurestart === 'function') {
+				map.off('measurestart', onMeasurestart);
+			}
+			if (typeof onMeasurefinish === 'function') {
+				map.off('measurefinish', onMeasurefinish);
+			}
+			control.remove();
+		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [map, onMeasurestart, onMeasurefinish, JSON.stringify(options)]);
+
+	return null;
+};
+
+export default MeasureControl;
