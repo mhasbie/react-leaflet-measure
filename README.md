@@ -2,9 +2,6 @@
 
 [![version](https://img.shields.io/npm/v/react-leaflet-measure.svg?style=plastic)](http://npm.im/react-leaflet-measure)
 [![react-leaflet compatibility](https://img.shields.io/npm/dependency-version/react-leaflet-measure/peer/react-leaflet.svg?style=plastic)](https://github.com/mhasbie/react-leaflet-measure)
-[![travis build](https://img.shields.io/travis/mhasbie/react-leaflet-measure.svg?style=plastic)](https://travis-ci.org/mhasbie/react-leaflet-measure)
-[![dependencies](https://img.shields.io/david/mhasbie/react-leaflet-measure.svg?style=plastic)](https://david-dm.org/mhasbie/react-leaflet-measure)
-[![peer dependencies](https://img.shields.io/david/peer/mhasbie/react-leaflet-measure.svg?style=plastic)](https://david-dm.org/mhasbie/react-leaflet-measure?type=peer)
 [![issues](https://img.shields.io/github/issues/mhasbie/react-leaflet-measure.svg?style=plastic)](https://github.com/mhasbie/react-leaflet-measure/issues)
 [![downloads](https://img.shields.io/npm/dt/react-leaflet-measure.svg?style=plastic)](http://npm-stat.com/charts.html?package=react-leaflet-measure&from=2018-01-01)
 [![MIT License](https://img.shields.io/npm/l/react-leaflet-measure.svg?style=plastic)](http://opensource.org/licenses/MIT)
@@ -15,7 +12,7 @@ for [react-leaflet](https://github.com/PaulLeCam/react-leaflet).
 
 Coordinate, linear, and area measure control for [Leaflet](http://leafletjs.com) maps. Extends [L.Control](http://leafletjs.com/reference.html#control).
 
-*Tested with Leaflet 1.3.4 and React-Leaflet 1.9.1, React-Leaflet 2.1.4*
+*Tested with React 19.2.0, Leaflet 1.9.4, React-Leaflet 5.0.0, React-Leaflet 4.0.0*
 
 
 ## Demos
