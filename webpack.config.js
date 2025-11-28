@@ -1,14 +1,19 @@
 /* eslint-disable */
+const path = require('path');
+
 module.exports = {
-	entry: './dist/react-leaflet-measure.min.js',
+	entry: './src/index.js',
 	output: {
+		path: path.resolve(__dirname, 'dist'),
+		filename: 'react-leaflet-measure.min.js',
 		library: {
 			root: 'ReactLeafletMeasure',
 			amd: 'react-leaflet-measure',
 			commonjs: 'react-leaflet-measure'
 		},
 		libraryExport: 'default',
-		libraryTarget: 'umd'
+		libraryTarget: 'umd',
+		globalObject: 'this'
 	},
 	externals: {
 		debug: 'debug',
@@ -22,10 +27,21 @@ module.exports = {
 			commonjs2: 'react-leaflet',
 			root: 'ReactLeaflet'
 		},
+		'@react-leaflet/core': {
+			commonjs: 'react-leaflet',
+			commonjs2: 'react-leaflet',
+			amd: 'react-leaflet-core',
+			root: 'ReactLeafletCore'
+		},
 		react: {
 			commonjs: 'react',
 			commonjs2: 'react',
 			root: 'React'
+		},
+		'react-dom': {
+			commonjs: 'react-dom',
+			commonjs2: 'react-dom',
+			root: 'ReactDOM'
 		}
 	},
 	mode: 'production',
@@ -36,8 +52,10 @@ module.exports = {
                 exclude: /(node_modules|bower_components)/,
                 loader: 'babel-loader',
                 options: {
-                    presets: ['env', 'react'],
-                    plugins: ['transform-class-properties']
+                    presets: ['@babel/preset-env', '@babel/preset-react'],
+                    plugins: [
+						'@babel/plugin-transform-class-properties'
+					]
                 }
 			},
 			{
@@ -49,5 +67,8 @@ module.exports = {
 				]
 			}
 		]
-	}
+	},
+	resolve: {
+		extensions: ['.js', '.jsx'], // Allow importing .js and .jsx without extension
+	},
 };

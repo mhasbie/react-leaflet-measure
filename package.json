@@ -5,11 +5,11 @@
 	"main": "dist/react-leaflet-measure.min.js",
 	"scripts": {
 		"build": "npm run build:lib && npm run build:dist && npm run build:dev",
-		"build:dist": "webpack src/index.js --output dist/react-leaflet-measure.min.js",
-		"build:dev": "webpack src/index.js --mode development --output dist/react-leaflet-measure.js",
+		"build:dist": "webpack",
+		"build:dev": "webpack --mode development --output-path ./dist --output-filename react-leaflet-measure.js",
 		"build:lib": "npm run compile:lib",
 		"clean:lib": "rm -Rf ./lib",
-		"compile:lib": "babel src --out-dir lib",
+		"compile:lib": "babel ./src --out-dir lib",
 		"prepublishOnly": "npm run build",
 		"test": "jest"
 	},
