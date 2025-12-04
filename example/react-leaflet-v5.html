@@ -7,11 +7,11 @@
 		<script type="importmap">
         {
           "imports": {
-            "react": "https://esm.sh/react@19.2.0/",
-            "react-dom/client": "https://esm.sh/react-dom@19.2.0/client",
+            "react": "https://esm.sh/react@19.2.1/",
+            "react-dom/client": "https://esm.sh/react-dom@19.2.1/client",
             "react-leaflet": "https://esm.sh/react-leaflet@5.0.0/",
             "@react-leaflet/core": "https://cdn.esm.sh/@react-leaflet/core",
-            "react-leaflet-measure": "https://esm.sh/react-leaflet-measure@3.0.0-beta.0/"
+            "react-leaflet-measure": "https://esm.sh/react-leaflet-measure@3.0.0-beta.1"
           }
         }
   	    </script>
@@ -24,7 +24,7 @@
 			}
 			.leaflet-container {
 				position: absolute;
-				top: 180px;
+				top: 40px;
 				bottom: 0;
 				left: 0;
 				right: 0;
@@ -36,7 +36,6 @@
   
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.28.4/babel.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet-src.js"></script>
-		<script src="./geojsonSamples.js"></script>
 		<script type="text/babel" data-type="module">
 			import React, { StrictMode, useState } from 'react';
         	import ReactDOMClient from 'react-dom/client';
@@ -59,7 +58,10 @@
 					primaryAreaUnit: 'sqmeters',
 					secondaryAreaUnit: 'acres',
 					activeColor: '#db4a29',
-					completedColor: '#9b2d14'
+					completedColor: '#9b2d14',
+					captureZIndex: 10000,
+					onMeasureStart: (e) => console.log('Measurement started:', e),
+					onMeasureFinish: (e) => console.log('Measurement finished:', e),
 				};
 
 				return (
