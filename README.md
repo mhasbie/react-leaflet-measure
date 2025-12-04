@@ -12,7 +12,7 @@ for [react-leaflet](https://github.com/PaulLeCam/react-leaflet).
 
 Coordinate, linear, and area measure control for [Leaflet](http://leafletjs.com) maps. Extends [L.Control](http://leafletjs.com/reference.html#control).
 
-*Tested with React 19.2.0, Leaflet 1.9.4, React-Leaflet 5.0.0, React-Leaflet 4.0.0*
+*Tested with React 19.2.1, Leaflet 1.9.4, React-Leaflet 5.0.0, React-Leaflet 4.0.0*
 
 
 ## Demos
