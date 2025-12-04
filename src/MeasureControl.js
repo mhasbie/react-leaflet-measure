@@ -1,19 +1,31 @@
 import { useEffect, useRef } from 'react';
-import { useMap } from 'react-leaflet';
+import { useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
-import 'leaflet-measure';
+import './leaflet-measure.js';
 import './leaflet-measure.css';
 
 /**
  * Functional MeasureControl for React-Leaflet v4+ and React 19
  * @param {object} props - Props for the control
- * @param {function} [props.onMeasurestart] - Handler for measurestart event
- * @param {function} [props.onMeasurefinish] - Handler for measurefinish event
+ * @param {function} [props.onMeasureStart] - Handler for measurestart event
+ * @param {function} [props.onMeasureFinish] - Handler for measurefinish event
  * @returns null
  */
-const MeasureControl = ({ onMeasurestart, onMeasurefinish, ...options }) => {
-	const map = useMap();
+const MeasureControl = ({ onMeasureStart, onMeasureFinish, ...options }) => {
 	const controlRef = useRef();
+
+	const map = useMapEvents({
+		measurestart: (e) => {
+			if (typeof onMeasureStart === 'function') {
+				onMeasureStart(e);
+			}
+		},
+		measurefinish: (e) => {
+			if (typeof onMeasureFinish === 'function') {
+				onMeasureFinish(e);
+			}
+		},
+	});
 
 	useEffect(() => {
 		// Create control
@@ -21,26 +33,12 @@ const MeasureControl = ({ onMeasurestart, onMeasurefinish, ...options }) => {
 		controlRef.current = control;
 		control.addTo(map);
 
-		// Event handlers
-		if (typeof onMeasurestart === 'function') {
-			map.on('measurestart', onMeasurestart);
-		}
-		if (typeof onMeasurefinish === 'function') {
-			map.on('measurefinish', onMeasurefinish);
-		}
-
 		// Cleanup
 		return () => {
-			if (typeof onMeasurestart === 'function') {
-				map.off('measurestart', onMeasurestart);
-			}
-			if (typeof onMeasurefinish === 'function') {
-				map.off('measurefinish', onMeasurefinish);
-			}
 			control.remove();
 		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [map, onMeasurestart, onMeasurefinish, JSON.stringify(options)]);
+	}, [map, onMeasureStart, onMeasureFinish, JSON.stringify(options)]);
 
 	return null;
 };
