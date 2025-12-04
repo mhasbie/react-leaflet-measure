@@ -1,22 +1,17 @@
-/* global describe, expect, it, jest */
-
-import React, { createRef } from 'react';
-import { mount } from './enzyme';
-import 'jest-enzyme';
-
-import { Map, TileLayer, withLeaflet } from 'react-leaflet';
-import MeasureControlDefault from '../dist/react-leaflet-measure.min.js';
-const MeasureControl = withLeaflet(MeasureControlDefault);
+import React from 'react';
+import { render } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { MapContainer, TileLayer } from 'react-leaflet';
+import MeasureControl from '../src/MeasureControl';
 
 describe('MeasureControl', () => {
-
-	it('Should instantiate a measurement control with given parameters', () => {
-		
+	it('renders MeasureControl with given parameters', () => {
 		const mapOptions = {
 			center: [0, 0],
 			zoom: 1,
 			minZoom: 1,
 			maxZoom: 22,
+			style: { height: '400px', width: '600px' },
 		};
 		const measureOptions = {
 			position: 'topright',
@@ -25,19 +20,23 @@ describe('MeasureControl', () => {
 			primaryAreaUnit: 'sqmeters',
 			secondaryAreaUnit: 'acres',
 			activeColor: '#db4a29',
-			completedColor: '#9b2d14'
+			completedColor: '#9b2d14',
 		};
-		
-		const measureControlRef = createRef();
 
-		const wrapper = mount(
-			<Map {...mapOptions}>
+		// Render the map with MeasureControl
+		const { container } = render(
+			<MapContainer {...mapOptions}>
 				<TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-				<MeasureControl {...measureOptions} ref={measureControlRef} />
-			</Map>
+				<MeasureControl {...measureOptions} />
+			</MapContainer>
 		);
-		
-		expect(wrapper).not.toBeEmptyRender();
-		expect(measureControlRef.current.leafletElement.options.position).toEqual('topright');
-	})
-})
+
+		// Check that the map and control container are rendered
+		// The measure control adds a .leaflet-control-measure element
+		const measureControl = container.querySelector('.leaflet-control-measure');
+		expect(measureControl).toBeInTheDocument();
+		// Optionally, check the position class
+		expect(measureControl).toHaveClass('leaflet-control');
+		expect(measureControl.parentElement).toHaveClass('leaflet-top', 'leaflet-right');
+	});
+});
