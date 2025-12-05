@@ -1,37 +1,46 @@
-import { MapControl } from 'react-leaflet';
+import { useEffect, useRef } from 'react';
+import { useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
-import 'leaflet-measure';
+import './leaflet-measure.js';
 import './leaflet-measure.css';
 
-export default class MeasureControl extends MapControl {
-	createLeafletElement(props) {
-		return L.control.measure(props);
-	}
+/**
+ * Functional MeasureControl for React-Leaflet v4+ and React 19
+ * @param {object} props - Props for the control
+ * @param {function} [props.onMeasureStart] - Handler for measurestart event
+ * @param {function} [props.onMeasureFinish] - Handler for measurefinish event
+ * @returns null
+ */
+const MeasureControl = ({ onMeasureStart, onMeasureFinish, ...options }) => {
+	const controlRef = useRef();
 
-	componentDidMount() {
-		super.componentDidMount();
-		const { map } = this.props.leaflet || this.context;
-		const {
-			onMeasurestart,
-			onMeasurefinish
-		} = this.props;
-		map.on('measurestart', (e) => {
-				this._propagateEvent(onMeasurestart, e);
-			})
-			.on('measurefinish', (e) => {
-				this._propagateEvent(onMeasurefinish, e);
-			});
-	}
-	
-	updateLeafletElement(fromProps, toProps) {
-		const { map } = this.props.leaflet || this.context;
-		this.leafletElement.remove();
-		this.leafletElement = new L.control.measure(toProps);
-		this.leafletElement.addTo(map)
-	}
-	
-	_propagateEvent(eventHandler, event) {
-		if (typeof eventHandler !== 'function') return;
-		eventHandler(event);
-	}
-}
+	const map = useMapEvents({
+		measurestart: (e) => {
+			if (typeof onMeasureStart === 'function') {
+				onMeasureStart(e);
+			}
+		},
+		measurefinish: (e) => {
+			if (typeof onMeasureFinish === 'function') {
+				onMeasureFinish(e);
+			}
+		},
+	});
+
+	useEffect(() => {
+		// Create control
+		const control = L.control.measure(options);
+		controlRef.current = control;
+		control.addTo(map);
+
+		// Cleanup
+		return () => {
+			control.remove();
+		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [map, onMeasureStart, onMeasureFinish, JSON.stringify(options)]);
+
+	return null;
+};
+
+export default MeasureControl;

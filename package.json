@@ -1,15 +1,15 @@
 {
 	"name": "react-leaflet-measure",
-	"version": "2.1.1",
+	"version": "3.0.0",
 	"description": "React wrapper of leaflet-measure. Coordinate, linear, and area measure control for Leaflet maps.",
 	"main": "dist/react-leaflet-measure.min.js",
 	"scripts": {
 		"build": "npm run build:lib && npm run build:dist && npm run build:dev",
-		"build:dist": "webpack src/index.js --output dist/react-leaflet-measure.min.js",
-		"build:dev": "webpack src/index.js --mode development --output dist/react-leaflet-measure.js",
+		"build:dist": "webpack",
+		"build:dev": "webpack --mode development --output-path ./dist --output-filename react-leaflet-measure.js",
 		"build:lib": "npm run compile:lib",
 		"clean:lib": "rm -Rf ./lib",
-		"compile:lib": "babel src --out-dir lib",
+		"compile:lib": "babel ./src --out-dir lib",
 		"prepublishOnly": "npm run build",
 		"test": "jest"
 	},
@@ -23,53 +23,64 @@
 		"leaflet",
 		"react-leaflet",
 		"leaflet-measure",
-		"react-leaflet-measure"
+		"react-leaflet-measure",
+		"react-leaflet-v4",
+		"react-leaflet-v5"
 	],
 	"author": "M. Hasbie",
 	"license": "MIT",
 	"peerDependencies": {
-		"leaflet": "^1.4.0",
-		"react-leaflet": "^1.9.1 || ^2.2.0"
+		"leaflet": "^1.9.4",
+		"react-leaflet": "^4.0.0 || ^5.0.0"
 	},
 	"devDependencies": {
-		"babel-cli": "^6.26.0",
-		"babel-core": "^6.26.3",
-		"babel-eslint": "^10.0.1",
-		"babel-jest": "^23.6.0",
-		"babel-loader": "^7.1.5",
-		"babel-plugin-transform-class-properties": "^6.24.1",
-		"babel-plugin-transform-object-rest-spread": "^6.26.0",
-		"babel-preset-env": "^1.7.0",
-		"babel-preset-react": "^6.24.1",
-		"babel-preset-stage-0": "^6.24.1",
-		"babel-register": "^6.26.0",
-		"css-loader": "^2.0.2",
-		"enzyme": "^3.8.0",
-		"enzyme-adapter-react-16": "^1.7.1",
-		"eslint": "^5.11.0",
-		"eslint-plugin-react": "^7.11.1",
-		"jest": "^23.6.0",
-		"jest-enzyme": "^7.0.1",
-		"leaflet": "^1.4.0",
-		"prop-types": "^15.5.10",
-		"react": "^16.5.2",
-		"react-dom": "^16.5.2",
-		"react-leaflet": "^2.2.0",
-		"style-loader": "^0.23.1",
-		"webpack": "^4.28.2",
-		"webpack-cli": "^3.1.2",
-		"webpack-dev-server": "^3.1.14"
+		"@babel/cli": "^7.28.3",
+		"@babel/core": "^7.28.5",
+		"@babel/eslint-parser": "^7.28.5",
+		"@babel/plugin-transform-class-properties": "^7.27.1",
+		"@babel/plugin-transform-object-rest-spread": "^7.28.4",
+		"@babel/preset-env": "^7.28.5",
+		"@babel/preset-react": "^7.28.5",
+		"@babel/preset-stage-0": "^7.8.3",
+		"@babel/register": "^7.28.3",
+		"@react-leaflet/core": "^3.0.0",
+		"@testing-library/jest-dom": "^6.9.1",
+		"@testing-library/react": "^16.3.0",
+		"babel-jest": "^30.2.0",
+		"babel-loader": "^10.0.0",
+		"css-loader": "^7.1.2",
+		"eslint": "^9.39.1",
+		"eslint-plugin-react": "^7.37.5",
+		"identity-obj-proxy": "^3.0.0",
+		"jest": "^30.2.0",
+		"jest-environment-jsdom": "^30.2.0",
+		"leaflet": "^1.9.4",
+		"prop-types": "^15.8.1",
+		"react": "^19.2.1",
+		"react-dom": "^19.2.1",
+		"react-leaflet": "^5.0.0",
+		"style-loader": "^4.0.0",
+		"webpack": "^5.102.1",
+		"webpack-cli": "^6.0.1",
+		"webpack-dev-server": "^5.2.2"
 	},
 	"dependencies": {
 		"leaflet-measure": "^3.1.0"
 	},
 	"jest": {
 		"collectCoverage": true,
+		"moduleNameMapper": {
+			"\\.(css|less|scss|sass)$": "identity-obj-proxy"
+		},
+		"testEnvironment": "jsdom",
 		"transform": {
-			".*": "<rootDir>/node_modules/babel-jest"
+			"^.+\\.[jt]sx?$": "babel-jest"
 		},
 		"testMatch": [
 			"**/__tests__/**/?(*.)+(spec|test).[jt]s?(x)"
+		],
+		"transformIgnorePatterns": [
+			"/node_modules/(?!react-leaflet|@react-leaflet|leaflet)/"
 		]
 	}
 }

@@ -8,6 +8,18 @@
 		
 		<title>react-leaflet-measure Demo Page</title>
 		
+		<script type="importmap">
+        {
+          "imports": {
+            "react": "https://esm.sh/react@19.2.1/",
+            "react-dom/client": "https://esm.sh/react-dom@19.2.1/client",
+            "react-leaflet": "https://esm.sh/react-leaflet@5.0.0/",
+            "@react-leaflet/core": "https://cdn.esm.sh/@react-leaflet/core",
+            "react-leaflet-measure": "https://esm.sh/react-leaflet-measure@3.0.0"
+          }
+        }
+  	    </script>
+
 		<!-- Bootstrap core CSS -->
 		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -19,7 +31,7 @@
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 		
 		<!-- Dependencies css -->
-		<link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.css" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" rel="stylesheet">
 		
 		<style>
 			.leaflet-container {
@@ -96,7 +108,7 @@
 		<!-- Footer -->
 		<footer class="py-5 bg-dark">
 			<div class="container">
-				<p class="m-0 text-center text-white">&copy; M. Hasbie 2019</p>
+				<p class="m-0 text-center text-white">&copy; M. Hasbie 2025</p>
 			</div>
 		</footer>
 
@@ -105,16 +117,9 @@
 		<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 		
 		<!-- Dependencies JavaScript -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.23.1/babel.js"></script>
-		<script src="https://unpkg.com/react@16.5.2/umd/react.production.min.js"></script>
-		<script src="https://unpkg.com/react-dom@16.5.2/umd/react-dom.production.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet-src.js"></script>
-		<script src="https://unpkg.com/react-leaflet@2.2.0/dist/react-leaflet.js"></script>
-		
-		<!-- Plugin JavaScript -->
-		<script src="https://npmcdn.com/react-leaflet-measure/dist/react-leaflet-measure.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.28.4/babel.min.js"></script>
 		
 		<!-- Main App -->
-		<script type="text/babel" src="App.jsx" ></script>
+		<script type="text/babel" src="App.jsx" data-type="module" ></script>
 	</body>
 </html>
