@@ -222,7 +222,7 @@ function App() {
 						allowTransparency="true"
 						allowFullScreen="true"
 					>
-						See the Pen <a href='https://codepen.io/m_hasbie/pen/mawyqX/'>react-leaflet-measure example for react-leaflet@2.x</a> by M. Hasbie
+						See the Pen <a href='https://codepen.io/m_hasbie/pen/LENgzaQ/'>react-leaflet-measure example for react-leaflet@5.x</a> by M. Hasbie
 						(<a href='https://codepen.io/m_hasbie'>@m_hasbie</a>) on <a href='https://codepen.io'>CodePen</a>.
 					</iframe>
 
