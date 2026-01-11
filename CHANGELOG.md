@@ -1,6 +1,10 @@
 react-leaflet-measure Changelog
 =========================
 
+## 3.0.1 (2026-01-11)
+
+* NPM Audit Fix
+
 ## 3.0.0 (2025-11-28)
 
 * Update Leaflet dependency to 1.9.4
