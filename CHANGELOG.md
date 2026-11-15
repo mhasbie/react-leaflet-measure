@@ -8,6 +8,7 @@ react-leaflet-measure Changelog
 * Fix vulnerabilities in development dependencies.
 * Add Jest unit and Playwright end-to-end tests.
 * Add GitHub Actions workflows for pull-request tests and package releases.
+* Update the GitHub Pages demo
 
 ## 3.0.1 (2026-01-11)
 
