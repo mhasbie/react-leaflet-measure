@@ -99,4 +99,29 @@ describe('MeasureControl', () => {
 
 		expect(secondRemove).toHaveBeenCalledTimes(1);
 	});
+
+	it('cancels an active measurement when the control is recreated', () => {
+		const onMeasureFinish = jest.fn();
+		const measureFactory = jest.spyOn(L.control, 'measure');
+		let map;
+		const renderMap = (position) => (
+			<MapContainer {...mapOptions}>
+				<MeasureControl position={position} onMeasureFinish={onMeasureFinish} />
+				<MapCapture onMap={(instance) => { map = instance; }} />
+			</MapContainer>
+		);
+		const { rerender } = render(renderMap('topright'));
+		const control = measureFactory.mock.results[0].value;
+		const mapMeasureFinish = jest.fn();
+		map.on('measurefinish', mapMeasureFinish);
+
+		act(() => {
+			control._startMeasure();
+		});
+		rerender(renderMap('bottomleft'));
+
+		expect(() => act(() => map.fire('move'))).not.toThrow();
+		expect(onMeasureFinish).not.toHaveBeenCalled();
+		expect(mapMeasureFinish).not.toHaveBeenCalled();
+	});
 });
