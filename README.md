@@ -12,7 +12,7 @@ for [react-leaflet](https://github.com/PaulLeCam/react-leaflet).
 
 Coordinate, linear, and area measure control for [Leaflet](http://leafletjs.com) maps. Extends [L.Control](http://leafletjs.com/reference.html#control).
 
-*Tested with React 19.2.1, Leaflet 1.9.4, React-Leaflet 5.0.0, React-Leaflet 4.0.0*
+*Tested with React 19.3.1, Leaflet 1.9.4, React-Leaflet 5.0.0, React-Leaflet 4.0.0*
 
 
 ## Demos
@@ -71,6 +71,13 @@ Refer [leaflet-measure control options](https://github.com/ljagis/leaflet-measur
 | --- | --- | ---
 | onMeasureStart | this | Fired when measurement starts.
 | onMeasureFinish | result | Fired when measurement finishes with results of the measurement.
+
+
+## Tests
+
+Run the unit tests with `npm test` (or `npm run test:unit`). Install the Playwright
+Chromium browser once with `npx playwright install chromium`, then run browser tests
+with `npm run test:e2e` or run both suites with `npm run test:all`.
 
 
 # Credits

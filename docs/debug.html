@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Standalone debug page for react-leaflet-measure's Leaflet control">
+		<meta name="author" content="M. Hasbie">
+		<title>react-leaflet-measure Debug Page</title>
+
+		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" rel="stylesheet">
+		<link href="../src/leaflet-measure.css" rel="stylesheet">
+		<style>
+			body {
+				padding-top: 56px;
+			}
+
+			#map {
+				height: min(68vh, 640px);
+				min-height: 380px;
+			}
+
+			#event-log {
+				max-height: 300px;
+				overflow-y: auto;
+			}
+
+			#event-log li {
+				overflow-wrap: anywhere;
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="navbar navbar-dark bg-dark fixed-top">
+			<div class="container">
+				<a class="navbar-brand" href="index.html">react-leaflet-measure</a>
+				<span class="navbar-text">Static debug page</span>
+			</div>
+		</nav>
+
+		<header class="bg-dark text-white py-4 mb-4">
+			<div class="container">
+				<h1 class="h2">Measurement control debug</h1>
+				<p class="mb-0 text-white-50">
+					Standalone Leaflet test harness. Change the options, apply them, and inspect
+					<code class="text-white">measurestart</code> and
+					<code class="text-white">measurefinish</code> events below.
+				</p>
+			</div>
+		</header>
+
+		<main class="container pb-5">
+			<div class="row">
+				<section class="col-lg-8 mb-4" aria-label="Map">
+					<div id="map" class="border rounded" aria-label="Interactive measurement map"></div>
+					<p class="small text-muted mt-2 mb-0">
+						Click the measure control, start a measurement, add points, then finish it
+						to see the result event.
+					</p>
+				</section>
+
+				<section class="col-lg-4 mb-4" aria-labelledby="options-heading">
+					<div class="card">
+						<div class="card-body">
+							<div class="d-flex justify-content-between align-items-center">
+								<h2 id="options-heading" class="h5 mb-0">Control options</h2>
+								<button id="reset-options" type="button" class="btn btn-sm btn-outline-secondary">
+									Reset
+								</button>
+							</div>
+							<hr>
+							<form id="options-form">
+								<div class="form-group">
+									<label for="position">Position</label>
+									<select class="form-control" id="position" name="position">
+										<option value="topleft">Top left</option>
+										<option value="topright" selected>Top right</option>
+										<option value="bottomleft">Bottom left</option>
+										<option value="bottomright">Bottom right</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="primaryLengthUnit">Primary length unit</label>
+									<select class="form-control" id="primaryLengthUnit" name="primaryLengthUnit">
+										<option value="feet">Feet</option>
+										<option value="meters" selected>Meters</option>
+										<option value="miles">Miles</option>
+										<option value="kilometers">Kilometers</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="secondaryLengthUnit">Secondary length unit</label>
+									<select class="form-control" id="secondaryLengthUnit" name="secondaryLengthUnit">
+										<option value="">None</option>
+										<option value="feet">Feet</option>
+										<option value="meters">Meters</option>
+										<option value="miles">Miles</option>
+										<option value="kilometers" selected>Kilometers</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="primaryAreaUnit">Primary area unit</label>
+									<select class="form-control" id="primaryAreaUnit" name="primaryAreaUnit">
+										<option value="acres">Acres</option>
+										<option value="hectares">Hectares</option>
+										<option value="sqfeet">Square feet</option>
+										<option value="sqmeters" selected>Square meters</option>
+										<option value="sqmiles">Square miles</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="secondaryAreaUnit">Secondary area unit</label>
+									<select class="form-control" id="secondaryAreaUnit" name="secondaryAreaUnit">
+										<option value="">None</option>
+										<option value="acres" selected>Acres</option>
+										<option value="hectares">Hectares</option>
+										<option value="sqfeet">Square feet</option>
+										<option value="sqmeters">Square meters</option>
+										<option value="sqmiles">Square miles</option>
+									</select>
+								</div>
+								<div class="form-row">
+									<div class="form-group col">
+										<label for="activeColor">Active color</label>
+										<input class="form-control" id="activeColor" name="activeColor" type="color" value="#db4a29">
+									</div>
+									<div class="form-group col">
+										<label for="completedColor">Completed color</label>
+										<input class="form-control" id="completedColor" name="completedColor" type="color" value="#9b2d14">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="captureZIndex">Capture z-index</label>
+									<input class="form-control" id="captureZIndex" name="captureZIndex" type="number" min="0" step="1" value="10000">
+								</div>
+								<button type="submit" class="btn btn-primary btn-block">Apply options</button>
+								<p class="small text-muted mt-2 mb-0">
+									Applying options recreates the control and clears existing measurements.
+								</p>
+							</form>
+						</div>
+					</div>
+				</section>
+			</div>
+
+			<section class="card" aria-labelledby="events-heading">
+				<div class="card-body">
+					<div class="d-flex justify-content-between align-items-center">
+						<h2 id="events-heading" class="h5 mb-0">Event log</h2>
+						<button id="clear-log" type="button" class="btn btn-sm btn-outline-secondary">
+							Clear
+						</button>
+					</div>
+					<p class="small text-muted mt-2">Measurement events appear here as JSON.</p>
+					<ol id="event-log" class="list-group list-group-flush" aria-live="polite"></ol>
+				</div>
+			</section>
+		</main>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+		<script src="../src/leaflet-measure.js"></script>
+		<script>
+			const map = L.map('map').setView([2.935403, 101.448205], 10);
+			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+				maxZoom: 19
+			}).addTo(map);
+
+			const optionsForm = document.getElementById('options-form');
+			const eventLog = document.getElementById('event-log');
+			let measureControl;
+
+			function readOptions() {
+				const values = new FormData(optionsForm);
+				return {
+					position: values.get('position'),
+					primaryLengthUnit: values.get('primaryLengthUnit'),
+					secondaryLengthUnit: values.get('secondaryLengthUnit') || undefined,
+					primaryAreaUnit: values.get('primaryAreaUnit'),
+					secondaryAreaUnit: values.get('secondaryAreaUnit') || undefined,
+					activeColor: values.get('activeColor'),
+					completedColor: values.get('completedColor'),
+					captureZIndex: Number(values.get('captureZIndex'))
+				};
+			}
+
+			function addLogEntry(name, detail) {
+				const entry = document.createElement('li');
+				entry.className = 'list-group-item small';
+				entry.textContent = `${new Date().toLocaleTimeString()} — ${name}: ${JSON.stringify(detail)}`;
+				eventLog.prepend(entry);
+			}
+
+			function applyOptions() {
+				if (measureControl) {
+					measureControl.remove();
+				}
+				measureControl = L.control.measure(readOptions()).addTo(map);
+			}
+
+			map.on('measurestart', function () {
+				addLogEntry('measurestart', {});
+			});
+			map.on('measurefinish', function (event) {
+				const result = {
+					pointCount: event.pointCount,
+					length: event.length,
+					lengthDisplay: event.lengthDisplay,
+					area: event.area,
+					areaDisplay: event.areaDisplay,
+					points: event.points.map(function (point) {
+						return { lat: point.lat, lng: point.lng };
+					})
+				};
+				addLogEntry('measurefinish', result);
+			});
+
+			optionsForm.addEventListener('submit', function (event) {
+				event.preventDefault();
+				applyOptions();
+			});
+			document.getElementById('reset-options').addEventListener('click', function () {
+				optionsForm.reset();
+				applyOptions();
+			});
+			document.getElementById('clear-log').addEventListener('click', function () {
+				eventLog.replaceChildren();
+			});
+
+			applyOptions();
+		</script>
+	</body>
+</html>

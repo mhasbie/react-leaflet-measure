@@ -1,6 +1,16 @@
 react-leaflet-measure Changelog
 =========================
 
+## 3.1.0 (2026-11-15)
+
+* Remove unused dependencies.
+* Add React as a peer dependency.
+* Fix vulnerabilities in development dependencies.
+* Add Jest unit and Playwright end-to-end tests.
+* Add GitHub Actions workflows for pull-request tests and package releases.
+* Update the GitHub Pages demo
+* Cancel active measurements and detach map listeners when the control is removed.
+
 ## 3.0.1 (2026-01-11)
 
 * NPM Audit Fix
