@@ -9,6 +9,7 @@ react-leaflet-measure Changelog
 * Add Jest unit and Playwright end-to-end tests.
 * Add GitHub Actions workflows for pull-request tests and package releases.
 * Update the GitHub Pages demo
+* Cancel active measurements and detach map listeners when the control is removed.
 
 ## 3.0.1 (2026-01-11)
 
