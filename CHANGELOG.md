@@ -5,6 +5,7 @@ react-leaflet-measure Changelog
 
 * Remove unused dependencies.
 * Add React as a peer dependency.
+* Fix vulnerabilities in development dependencies.
 
 ## 3.0.1 (2026-01-11)
 
