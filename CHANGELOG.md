@@ -7,6 +7,7 @@ react-leaflet-measure Changelog
 * Add React as a peer dependency.
 * Fix vulnerabilities in development dependencies.
 * Add Jest unit and Playwright end-to-end tests.
+* Add GitHub Actions workflows for pull-request tests and package releases.
 
 ## 3.0.1 (2026-01-11)
 
