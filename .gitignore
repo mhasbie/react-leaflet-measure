@@ -1,3 +1,6 @@
 node_modules/
 lib/
 coverage/
+.e2e-build/
+playwright-report/
+test-results/

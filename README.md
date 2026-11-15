@@ -73,6 +73,13 @@ Refer [leaflet-measure control options](https://github.com/ljagis/leaflet-measur
 | onMeasureFinish | result | Fired when measurement finishes with results of the measurement.
 
 
+## Tests
+
+Run the unit tests with `npm test` (or `npm run test:unit`). Install the Playwright
+Chromium browser once with `npx playwright install chromium`, then run browser tests
+with `npm run test:e2e` or run both suites with `npm run test:all`.
+
+
 # Credits
 Credits goes to all the [contributors](https://github.com/ljagis/leaflet-measure/graphs/contributors) for the original work.
 
